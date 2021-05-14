@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import "./index.less"
+import './index.less'
 
 const { Header, Sider, Content } = Layout;
 

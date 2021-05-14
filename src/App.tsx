@@ -1,4 +1,4 @@
-import './App.css';
+import './App.less';
 import MyLayout from './components/layout'
 
 const App = () => {
