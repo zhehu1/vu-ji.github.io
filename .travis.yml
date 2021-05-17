@@ -16,7 +16,7 @@ cache: yarn
 # 第3行指定保留构建后的文件
 # 第4行指定每次部署会新增一个提交记录再推送，而不是使用 git push --force
 # 第5行指定构建后要部署的目录
-# 第6、7行指定 master 分支有提交行为时，将触发构建后部署
+# 第6、7行指定 main 分支有提交行为时，将触发构建后部署
 # 第8行是部署需要用到的github-token,其中$GITHUB_TOKEN是变量，它可以在Travis CI个人仓库的setting页里设置
 deploy:
   provider: pages
@@ -24,5 +24,5 @@ deploy:
   keep-history: true
   local-dir: dist
   on:
-    branch: master
+    branch: main
   github-token: $GITHUB_TOKEN
