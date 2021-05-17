@@ -1,17 +1,23 @@
-import { Layout } from 'antd';
+import { FC } from 'react'
+import { Layout, Typography } from 'antd';
+import ComSider from '../sider'
 import './index.less'
 
-const { Header, Sider, Content } = Layout;
+const { Title } = Typography;
 
-const ComLayout = () => {
+const { Header, Content } = Layout;
+
+const ComLayout: FC = (props) => {
     return <Layout className="site-layout">
-                <Header className="site-layout-background"/>
-                <Layout>
-                    <Sider className="site-layout-background">Sider</Sider>
-                    <Content>Content</Content>
-                </Layout>
-            </Layout>
+        <Header className="site-layout_header site-layout-background">
+            <Title level={3}>vu-ji</Title>
+        </Header>
+        <Layout>
+            <ComSider />
+            <Content className="site-layout_content">{props.children}</Content>
+        </Layout>
+    </Layout>
 };
-  
+
 
 export default ComLayout
