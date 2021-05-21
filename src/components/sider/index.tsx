@@ -1,28 +1,55 @@
-import { FC } from 'react'
-import { useHistory } from "react-router-dom";
+import { FC, useEffect, useState } from 'react'
+import { useHistory, useLocation } from "react-router-dom";
 import { Layout, Menu } from 'antd';
+import routeConfig from '@/router'
 
-// const { SubMenu } = Menu;
+const { SubMenu } = Menu;
 
 const { Sider } = Layout;
 
-const ComSider: FC = (props) => {
-    let history = useHistory();
+const getMenuItem = (route: any) => {
+    return <Menu.Item key={route.path}>{route.name}</Menu.Item>
+}
+
+const getSubMenu= (route: any) => {
+    return <SubMenu key={route.path} title={route.name}>
+        {
+            route.routes.map((item: any) => {
+                return getMenuItem(item)
+            })
+        }
+    </SubMenu>
+}
+
+const ComSider: FC = () => {
+    const history = useHistory();
+    const location = useLocation();
+    let [ selectKeys, setSelectKeys ] = useState(['/'])
+    const { routes } = routeConfig[0]
 
     const handleClick = (e: any) => {
         history.push(e.key)
     };
+
+    useEffect(() => {
+        setSelectKeys([location.pathname])
+    }, [location]);
+
     return <Sider className="site-layout-background">
         <Menu
             onClick={handleClick}
-            defaultSelectedKeys={['/']}
-            defaultOpenKeys={['sub1']}
+            selectedKeys={selectKeys}
             mode="inline"
         >
-            <Menu.ItemGroup key="g1">
-                <Menu.Item key="/">首页</Menu.Item>
-                <Menu.Item key="/babel">babel</Menu.Item>
-            </Menu.ItemGroup>
+            {
+                routes.map((item: any) => {
+                    if (item.routes) {
+                        return getSubMenu(item)
+                    } else {
+                        return getMenuItem(item)
+                    }
+                })
+            }
         </Menu>
     </Sider>
 };
