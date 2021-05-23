@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useHistory, useLocation } from "react-router-dom";
 import { Layout, Menu } from 'antd';
 import routeConfig from '@/router'
@@ -11,7 +11,7 @@ const getMenuItem = (route: any) => {
     return <Menu.Item key={route.path}>{route.name}</Menu.Item>
 }
 
-const getSubMenu= (route: any) => {
+const getSubMenu = (route: any) => {
     return <SubMenu key={route.path} title={route.name}>
         {
             route.routes.map((item: any) => {
@@ -21,23 +21,44 @@ const getSubMenu= (route: any) => {
     </SubMenu>
 }
 
+const getSubMenuOpenKeys = (routes: any = [], key: string) : Array<string> => {
+    let result: Array<string> = []
+    for (let o in routes) {
+        const curr = routes[o]
+        if (key.startsWith(curr.path) && curr.routes) {
+            result.push(curr.path)
+            result.concat(getSubMenuOpenKeys(curr.routes, key))
+            break
+        }
+    }
+    return result
+}
+
 const ComSider: FC = () => {
     const history = useHistory();
     const location = useLocation();
-    let [ selectKeys, setSelectKeys ] = useState(['/'])
+    const [ selectKeys, setSelectKeys ] = useState(['/'])
+    const [ openkeys, setOpenKeys ] = useState<Array<string>>([''])
     const { routes } = routeConfig[0]
 
     const handleClick = (e: any) => {
         history.push(e.key)
     };
 
+    const handleOpenKeys = (keys: Array<React.Key>) => {
+        setOpenKeys([keys.pop()] as Array<string>)
+    }
+
     useEffect(() => {
         setSelectKeys([location.pathname])
-    }, [location]);
+        setOpenKeys(getSubMenuOpenKeys(routes, location.pathname))
+    }, [location, routes]);
 
     return <Sider className="site-layout-background">
         <Menu
             onClick={handleClick}
+            onOpenChange={handleOpenKeys}
+            openKeys={openkeys}
             selectedKeys={selectKeys}
             mode="inline"
         >

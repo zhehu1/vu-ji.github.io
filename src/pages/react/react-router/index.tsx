@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
+import AntdMarkdown from '@/components/antdMarkdown'
+import mdDoc from './index.md'
 
 const ReactRouter: FC = () => {
-    return <>
-        this is ReactRouter page
-    </>
+    return <AntdMarkdown>{mdDoc}</AntdMarkdown>
 }
 
 export default ReactRouter

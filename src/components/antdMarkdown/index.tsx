@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import Markdown from 'markdown-to-jsx';
-import { Typography } from 'antd';
+import { Typography, Collapse } from 'antd';
+import "./index.less"
 
+const { Panel } = Collapse;
 const { Title, Paragraph, Text, Link } = Typography;
 
 interface IOverridesItem {
@@ -15,6 +17,8 @@ const TextTypes = ['disabled', 'mark', 'code', 'keyboard', 'underline', 'delete'
 const defaultProps = {
     options: {
         overrides: {
+            Collapse,
+            Panel,
             ...TitleLevel.reduce((pre, curr) => {
                 pre[`h${curr}`] = {
                     component: Title,
@@ -43,8 +47,9 @@ const defaultProps = {
 
 const MyMarkdown: FC = (props) => {
     const renderProps = Object.assign({}, defaultProps, props)
-    console.log(renderProps)
-    return <Markdown options={renderProps.options}>{renderProps.children}</Markdown>
+    return <div className="my-markdown-container">
+        <Markdown options={renderProps.options}>{renderProps.children}</Markdown>
+    </div>
 }
 
 export default MyMarkdown
