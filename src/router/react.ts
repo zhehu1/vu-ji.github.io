@@ -2,6 +2,7 @@ import Root from '@/components/root'
 import ReactRedux from '@/pages/react/react-redux'
 import ReactRouter from '@/pages/react/react-router'
 
+
 const reactPagesConfig = [
     {
         path: '/react',

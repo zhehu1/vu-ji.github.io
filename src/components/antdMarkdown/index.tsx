@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import Markdown from 'markdown-to-jsx';
 import { Typography, Collapse } from 'antd';
+import { Link } from 'react-router-dom'
 import "./index.less"
 
 const { Panel } = Collapse;
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 interface IOverridesItem {
     [key: string]: any
@@ -19,6 +20,7 @@ const defaultProps = {
         overrides: {
             Collapse,
             Panel,
+            Link,
             ...TitleLevel.reduce((pre, curr) => {
                 pre[`h${curr}`] = {
                     component: Title,
@@ -39,7 +41,7 @@ const defaultProps = {
             }, {} as IOverridesItem),
             p: Paragraph,
             span: Text,
-            a: Link
+            a: Typography.Link
         }
     },
     children: ''

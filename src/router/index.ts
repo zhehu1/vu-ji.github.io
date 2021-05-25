@@ -3,6 +3,8 @@ import Index from '../pages/index'
 import Babel from '../pages/babel'
 import reactPagesConfig from './react'
 import othersPagesConfig from './others'
+import NotFound from '@/pages/others/notFound'
+
 
 const routeConfig = [
     {
@@ -23,7 +25,7 @@ const routeConfig = [
             ...reactPagesConfig,
             ...othersPagesConfig
         ]
-    },
+    }
 ]
 
 export default routeConfig

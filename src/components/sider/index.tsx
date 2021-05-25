@@ -8,10 +8,16 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 const getMenuItem = (route: any) => {
+    if (route.hidden) {
+        return null
+    }
     return <Menu.Item key={route.path}>{route.name}</Menu.Item>
 }
 
 const getSubMenu = (route: any) => {
+    if (route.hidden) {
+        return null
+    }
     return <SubMenu key={route.path} title={route.name}>
         {
             route.routes.map((item: any) => {

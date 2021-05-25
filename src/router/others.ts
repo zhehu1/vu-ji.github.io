@@ -1,4 +1,5 @@
 import Root from '@/components/root'
+import NotFound from '@/pages/others/notFound'
 import Packing from '@/pages/others/packing'
 
 const othersPagesConfig = [
@@ -13,6 +14,12 @@ const othersPagesConfig = [
               component: Packing
             }
         ]
+    },
+    {
+        path: '*',
+        name: '其他',
+        hidden: true,
+        component: NotFound
     }
 ]
 
