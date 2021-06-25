@@ -1,7 +1,5 @@
 import Root from '@/components/root'
-import ReactRedux from '@/pages/react/react-redux'
-import ReactRouter from '@/pages/react/react-router'
-
+import AsyncComponent from '@/components/asyncComponent'
 
 const reactPagesConfig = [
     {
@@ -13,13 +11,13 @@ const reactPagesConfig = [
                 path: '/react/redux',
                 exact: true,
                 name: 'Redux',
-                component: ReactRedux
+                component: AsyncComponent(() => import('@/pages/react/react-redux'))
             },
             {
                 path: '/react/router',
                 name: 'Router',
                 exact: true,
-                component: ReactRouter
+                component: AsyncComponent(() => import('@/pages/react/react-router'))
             }
         ]
     }
