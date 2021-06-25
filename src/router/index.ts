@@ -1,9 +1,9 @@
 import App from '../App'
-import Index from '../pages/index'
-import Babel from '../pages/babel'
 import reactPagesConfig from './react'
 import othersPagesConfig from './others'
-import NotFound from '@/pages/others/notFound'
+import Index from '@/pages/index'
+// import Babel from '@/pages/babel'
+// import NotFound from '@/pages/others/notFound'
 
 
 const routeConfig = [
@@ -16,12 +16,12 @@ const routeConfig = [
                 exact: true,
                 component: Index
             },
-            {
-                name: 'Babel',
-                path: '/babel',
-                exact: true,
-                component: Babel
-            },
+            // {
+            //     name: 'Babel',
+            //     path: '/babel',
+            //     exact: true,
+            //     component: Babel
+            // },
             ...reactPagesConfig,
             ...othersPagesConfig
         ]

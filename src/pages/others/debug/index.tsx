@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import AntdMarkdown from '@/components/antdMarkdown'
 import mdDoc from './index.md'
 
-const ReactRedux: FC = () => {
+const Debug: FC = () => {
     return <AntdMarkdown>{mdDoc}</AntdMarkdown>
 }
 
-export default ReactRedux
+export default Debug

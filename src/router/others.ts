@@ -1,6 +1,7 @@
 import Root from '@/components/root'
 import NotFound from '@/pages/others/notFound'
 import Packing from '@/pages/others/packing'
+import Debug from '@/pages/others/debug'
 
 const othersPagesConfig = [
     {
@@ -12,7 +13,12 @@ const othersPagesConfig = [
               path: "/others/packings",
               name: '打包对比',
               component: Packing
-            }
+            },
+            {
+                path: "/others/debug",
+                name: '前端调试',
+                component: Debug
+              }
         ]
     },
     {
