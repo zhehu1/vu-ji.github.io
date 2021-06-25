@@ -5,7 +5,6 @@ import Index from '@/pages/index'
 // import Babel from '@/pages/babel'
 // import NotFound from '@/pages/others/notFound'
 
-
 const routeConfig = [
     {
         component: App,
