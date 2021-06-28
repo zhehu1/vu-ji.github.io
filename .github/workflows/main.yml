@@ -31,6 +31,7 @@ jobs:
         run: |
           yarn install
           yarn run build
+          ls
 
       # Runs a set of commands using the runners shell
       - name: Deploy
@@ -38,4 +39,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: ../dist
+          FOLDER: ./dist
